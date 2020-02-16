@@ -1,0 +1,126 @@
+html, body {
+    height: 100%!important;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.main {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+
+.main .block {
+    border: 1px dotted grey;
+}
+
+.main header.block {
+    flex: 0 1 auto;
+    /* The above is shorthand for:
+    flex-grow: 0,
+    flex-shrink: 1,
+    flex-basis: auto
+    */
+}
+
+.main .block.content {
+    flex: 1 1 auto;
+}
+
+.main footer.block {
+    flex: 0 1 40px;
+}
+
+.row-full {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    overflow: auto;
+    position: relative;
+}
+
+ul.nobullets {
+    display: block;
+    width: auto;
+    height: 100%;
+    list-style-type: none;
+}
+
+li {
+    float: left;
+    display: block;
+    height: 100%;
+    width: 180px;   
+}
+
+.btn {
+    border-radius: 4px;
+    background-color: lightgrey;
+    border: 1px white solid;
+    font-size: 14px;
+    transition: .5s background-color, .1s border;;
+    border: 2px solid white;
+    width: 180px;
+}
+
+
+.btn:hover {
+    cursor: pointer;
+    background-color: grey;
+    border: 2px solid darkgrey;
+}
+
+.detail-container {
+    background-color: lightyellow;
+    padding: 25px;
+    position: relative;
+}
+
+.return-btn {
+    position: absolute;
+    right: 3px;
+    top: 3px;
+}
+
+.return-btn:hover {
+    cursor: pointer;
+}
+
+.fin-container {
+    background-color: lightblue ;
+    padding: 25px;
+}
+
+.fin-block {
+    height: 100px;
+    width: 100px;
+    border: 1px solid black; 
+    border-radius: 5px;
+    margin-bottom: 25px;
+    animation: finBlock .5s;
+    padding: 5px;
+    text-align: center;
+    transition: .5s transform, width 1s, height 1s;
+}
+
+
+.fin-block.fullsize {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+@keyframes finBlock {
+    from {
+        transform: scale(.8);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+    
+.fin-block.last {
+    margin-bottom: 0px;
+}

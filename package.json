@@ -4,9 +4,9 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "startdev": "nodemon --exec babel-node src/index.js",
+    "startdev": "nodemon --exec babel-node server-side/index.js",
     "start": "node dist/index.js",
-    "build": "babel -d dist/ src/",
+    "build": "babel -d dist/ server-side/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Nick Redmark",

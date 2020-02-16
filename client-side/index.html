@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<head>
+    <title>Moolah meter</title>
+    <script
+			  src="https://code.jquery.com/jquery-3.4.1.min.js"
+			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			  crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-debug.js"></script>
+    <script src="main.js"></script>      
+</head>
+<body>
+    <div class="main">
+        
+        <header class="block">
+            <div class="container-fluid">    
+                <div>
+                    <h2 data-bind="text: title"></h2>
+                </div>
+            </div>
+        </header>
+
+        <div class="block content">
+            <div class="row-full" style="background-color: #34253C;">&nbsp;</div>
+            <div class="row-full" style="background-color: #B3ACB7;">
+                &nbsp;
+                <span data-bind="text: selectedYear"></span>
+                <span data-bind="text: selectedMonth"></span>
+            </div>
+            <div class="row-full"  style="background-color: #34253C;">&nbsp;</div>
+            <div class="row-full">
+                <div data-bind="fadeVisible: showYears()">
+                    <ul data-bind="foreach: years" class="nobullets" id="year-menu">
+                        <li>
+                            <button data-bind="click: $parent.setYear, 
+                                                text: $data" type="button" class="btn"></button>
+                        </li>
+                    </ul>
+                </div>     
+                <div data-bind="visible: !showYears()">
+                    <ul data-bind="foreach: months" class="nobullets" id="month-menu">
+                        <li>
+                            <button data-bind="click: $parent.setMonth, 
+                                               text: $data" type="button" class="btn">Jan</button>
+                        </li>
+                    </ul>
+                    <button data-bind="click: menuBack" type="button" class="btn">Back</button>
+                </div>
+            </div>
+            <div class="row-full" style="margin-bottom: auto;">
+                <div data-bind="visible: !showDetails()" class="fin-container">
+                    <div data-bind="click: goToDetails" class="fin-block">    
+                        <span>Heng</span>
+                        <br>
+                        <br>    
+                        <span>20.0</span>
+                    </div>
+                    <div data-bind="click: goToDetails" class="fin-block last">
+                        <span>Hong</span>
+                        <br>
+                        <br>
+                        <span>30.92</span>
+                    </div>
+                </div>
+                <div data-bind="visible: showDetails()" class="detail-container" style="background-color: lightyellow;">
+                    <span>Test</span>
+                    <div data-bind="click: goToOverview" class="return-btn">
+                        <span>&#8592;</span>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+        <footer class="block">
+            <span>Made by Norby</span>
+        </footer>
+    </div>
+</body>
