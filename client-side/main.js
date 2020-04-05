@@ -1,10 +1,12 @@
 $(document).ready(function() {
-
-    ko.applyBindings(new AppViewModel());
+    callGraphQL('{ categories { _id, name, type, totalValue } }')
+        .then(function(res) {
+            ko.applyBindings(new AppViewModel(res))
+        })
 });
 
 
-function AppViewModel() {
+function AppViewModel(data) {
     var self = this;
     self.title = "Norb's and Zhana's moolah meter";
 
@@ -14,6 +16,8 @@ function AppViewModel() {
     self.showYears = ko.observable(true);
     self.showDetails = ko.observable(false);
     
+    self.categories = ko.observableArray(data.categories);
+
     self.years = ko.observableArray([2016, 2017, 2018, 2019]);
     self.months = ko.observableArray(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']);
 
@@ -57,16 +61,8 @@ ko.bindingHandlers.fadeVisible = {
     }
 };
 
-function callGraphQL() {
-    $.ajax({
-        url: "http://localhost:4000/graphql", 
-        headers: { 'Content-Type': 'application/json' },
-        method: "POST",
-        data: JSON.stringify({query: '{ message }' }),
-        success: function(msg){
-            alert(msg.data.message);
-        }
-    });
+function getInitData() {
+    return ;
 }
 
 

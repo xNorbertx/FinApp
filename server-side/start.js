@@ -10,6 +10,7 @@ import {getTransactionTypeDef} from './typedefs/typedef-transaction'
 const app = express()
 
 const homePath = '/graphiql'
+const apiPath = '/api'
 const URL = 'http://localhost'
 const PORT = 4001
 
@@ -19,7 +20,7 @@ export const start = async () => {
 
     const resolvers = createResolvers()
     const typeDefs = getTransactionTypeDef()
-    
+
     const schema = makeExecutableSchema({
       typeDefs,
       resolvers
@@ -35,6 +36,11 @@ export const start = async () => {
     app.use(homePath, graphiqlExpress({
       endpointURL: '/graphql'
     }))
+
+    //routing
+    app.post(`${apiPath}/graphql`, function(req, res) {
+      res.status(200).json()
+    }) 
 
     app.listen(PORT, () => {
       console.log(`Visit ${URL}:${PORT}${homePath}`)

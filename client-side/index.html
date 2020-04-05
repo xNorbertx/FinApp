@@ -8,11 +8,11 @@
 
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-debug.js"></script>
+    <script src="graphqlDataGateway.js"></script>      
     <script src="main.js"></script>      
 </head>
 <body>
     <div class="main">
-        
         <header class="block">
             <div class="container-fluid">    
                 <div>
@@ -20,6 +20,9 @@
                 </div>
             </div>
         </header>
+        <div>
+            <button style="width: 120px; height: 40px; color: green;" onclick="callGraphQL();">Test</button>
+        </div>
 
         <div class="block content">
             <div class="row-full" style="background-color: #34253C;">&nbsp;</div>
@@ -49,18 +52,12 @@
                 </div>
             </div>
             <div class="row-full" style="margin-bottom: auto;">
-                <div data-bind="visible: !showDetails()" class="fin-container">
+                <div data-bind="visible: !showDetails(), foreach: categories" class="fin-container">
                     <div data-bind="click: goToDetails" class="fin-block">    
-                        <span>Heng</span>
+                        <span data-bind="text: name"></span>
                         <br>
                         <br>    
-                        <span>20.0</span>
-                    </div>
-                    <div data-bind="click: goToDetails" class="fin-block last">
-                        <span>Hong</span>
-                        <br>
-                        <br>
-                        <span>30.92</span>
+                        <span data-bind="text: totalValue"></span>
                     </div>
                 </div>
                 <div data-bind="visible: showDetails()" class="detail-container" style="background-color: lightyellow;">
@@ -70,7 +67,6 @@
                     </div>
                 </div>
             </div>
-            
         </div>
 
         <footer class="block">
